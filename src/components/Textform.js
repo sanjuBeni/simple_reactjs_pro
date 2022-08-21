@@ -9,19 +9,29 @@ export default function Textform(props) {
 
   const upperCaseHandle = ()=> { 
     setText(text.toUpperCase());
+    props.showAlert("Uppercase is active.", 'success');
+    document.title = "Web Text - Uppercase";
   }
 
   const lowerCaseHandle = () => {
     setText(text.toLowerCase());
+    props.showAlert("Lowercase is active.", 'success');
+    document.title = "Web Text - Lowercase";
   }
 
   const clearCaseHandle = ()=> {
     let newText = "";
     setText(newText);
+    props.showAlert("Clear all text.", 'danger');
   }
 
   const handleCopyText = () =>{
+    props.showAlert("Text is copy.", 'success');
+  }
 
+  const handleExtraSpace = () => {
+    console.log(text.replace(/\s+/g,''));
+    props.showAlert("Extra space is remove.", 'success');
   }
 
   return (
@@ -43,7 +53,7 @@ export default function Textform(props) {
             <button className="btn btn-warning mx-2" onClick={lowerCaseHandle}>Lowercase</button>
             <button className="btn btn-danger mx-2" onClick={clearCaseHandle}>Cleartext</button>
             <button className="btn btn-success mx-2" onClick={handleCopyText}>Copytext</button>
-            <button className="btn btn-info mx-2" onClick={handleCopyText}>Remove Extra Space</button>
+            <button className="btn btn-info mx-2" onClick={handleExtraSpace}>Remove Extra Space</button>
         </div>
         <div className="mt-2">
           <h2>Your Text Summary</h2>
